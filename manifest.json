@@ -1,0 +1,35 @@
+{
+  "short_name": "CTAI",
+  "name": "CTAI STUDIO V4",
+  "description": "A responsive web application replicating the CTAI Studio UI, showcasing a gallery of AI-powered creative tools for architecture and design with a sleek, dark-mode interface.",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/1RjHYzzS/Logo-Photoroom.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.postimg.cc/1RjHYzzS/Logo-Photoroom.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.postimg.cc/1RjHYzzS/Logo-Photoroom.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://i.postimg.cc/1RjHYzzS/Logo-Photoroom.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#facc15",
+  "background_color": "#18181b"
+}

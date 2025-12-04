@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTAI Studio Showcase</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#18181b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CTAI Studio">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/1RjHYzzS/Logo-Photoroom.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      // Set theme on page load to prevent FOUC (Flash of Unstyled Content)
+      // Default to dark theme if not explicitly set to 'light'.
+      if (localStorage.getItem('theme') !== 'light') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+      // Configure TailwindCSS to use the 'class' strategy for dark mode and custom font
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          fontFamily: {
+            sans: ['Be Vietnam Pro', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+    <style>
+      /* For custom scrollbar styling to match the dark theme */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* slate-100 */
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #18181b; /* zinc-900 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #94a3b8; /* slate-400 */
+        border-radius: 4px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #3f3f46; /* zinc-700 */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #64748b; /* slate-500 */
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #52525b; /* zinc-600 */
+      }
+
+      /* Animation for newly loaded images */
+      @keyframes image-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .animate-image-in {
+        animation: image-in 0.4s ease-out forwards;
+      }
+
+      /* Chat bubble animation */
+      @keyframes bubble-in {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .animate-bubble-in {
+        animation: bubble-in 0.35s ease-out forwards;
+      }
+
+      body {
+        font-family: 'Be Vietnam Pro', 'sans-serif';
+      }
+
+      /* Landing Page Animations */
+      @keyframes assemble-shard {
+        0% {
+          transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)) scale(0);
+          opacity: 0;
+        }
+        60% {
+          transform: translate(var(--mid-x), var(--mid-y)) rotate(var(--mid-rot)) scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, 0) rotate(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .anim-shard {
+        opacity: 0;
+        animation: assemble-shard 1.5s cubic-bezier(0.6, 0.0, 0.2, 1) forwards;
+      }
+      
+      .anim-shard-1 { animation-delay: 0.1s; }
+      .anim-shard-2 { animation-delay: 0.2s; }
+      .anim-shard-3 { animation-delay: 0.3s; }
+      .anim-shard-4 { animation-delay: 0.0s; }
+
+
+      @keyframes fade-slide-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      
+      .animate-entry {
+        opacity: 0;
+        animation: fade-slide-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Christmas 2026 Animations */
+      @keyframes snowfall {
+        0% { transform: translate3d(var(--start-x), -10vh, 0); }
+        100% { transform: translate3d(var(--end-x), 110vh, 0); }
+      }
+
+      .snowflake {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 100;
+        opacity: 0;
+        animation: snowfall 10s linear infinite;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+      }
+
+      .snowflake:nth-child(5n) { width: 3px; height: 3px; animation-duration: 12s; animation-delay: -1s; opacity: 0.8; }
+      .snowflake:nth-child(5n + 1) { width: 5px; height: 5px; animation-duration: 8s; animation-delay: -3s; opacity: 0.9; }
+      .snowflake:nth-child(5n + 2) { width: 2px; height: 2px; animation-duration: 15s; animation-delay: -5s; opacity: 0.7; }
+      .snowflake:nth-child(5n + 3) { width: 4px; height: 4px; animation-duration: 9s; animation-delay: -2s; }
+      .snowflake:nth-child(5n + 4) { width: 6px; height: 6px; animation-duration: 7s; animation-delay: -4s; opacity: 1; }
+      
+      @keyframes text-glow {
+        0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); }
+        50% { text-shadow: 0 0 12px rgba(255, 69, 0, 0.9), 0 0 25px rgba(255, 69, 0, 0.7); }
+      }
+      .animate-glow {
+        animation: text-glow 2.5s ease-in-out infinite;
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.25.0"
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+  <body class="antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
